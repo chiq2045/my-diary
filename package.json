@@ -1,0 +1,26 @@
+{
+  "name": "my-diary",
+  "version": "1.0.0",
+  "description": "A diary web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "react",
+    "webpack",
+    "mysql",
+    "bulma"
+  ],
+  "author": "Charles Oroko",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/router": "^9.0.1",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-logger": "^3.2.1",
+    "koa-mount": "^4.0.0",
+    "koa-static": "^5.0.0"
+  }
+}
