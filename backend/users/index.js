@@ -6,45 +6,54 @@ const users = new Koa();
 const userRouter = new Router();
 
 userRouter
+userRouter
   .get('/', ctx => {
-    const { id } = ctx.query;
-    if (!id) {
-      console.log('Get all users');
-      ctx.body = { message: 'There are no users yet' };
-    } else{
-      console.log(`Get user with id ${id}`);
-      ctx.body = { id: id, message: 'Still no user here yet' };
-    }
+    console.log('Get all users');
     ctx.status = 200;
+    ctx.body = { message: 'Get all users' };
+  })
+  .get('/:id', ctx => {
+    const { id } = ctx.params;
+    console.log(`Get user with id ${id}`);
+    ctx.status = 200;
+    ctx.body = { message: 'Get user with id', id: id};
   })
   .post('/', koaBody(), ctx => {
-    const { userName, password } = ctx.request.body;
-    console.log('Add the following user:');
+    const { emailAddress, password, name } = ctx.request.body;
+    console.log('Create a new user');
     console.log({
-      userName: userName,
-      password: password
+      emailAddress: emailAddress,
+      password: password,
+      name: name
     });
     ctx.status = 200;
     ctx.body = {
-      message: 'User creation is not yet implemented',
+      message: 'Create a new user',
       user: {
-        userName: userName,
-        password: password
+        emailAdress: emailAddress,
+        password: password,
+        name: name
       }
     };
   })
-  .put('/', koaBody(), ctx => {
-    const { id } = ctx.query;
-    console.log(`Update user with id ${id}`);
+  .put('/:id', ctx => {
+    const { id } = ctx.params;
+    console.log(`Update user with id ${id},\nor create one if it doesn't exist`);
     ctx.status = 200;
-    ctx.body = { id: id, message: 'Still no user here yet' };
+    ctx.body = {
+      message: 'Update user with given id',
+      id: id
+    };
   })
-  .delete('/', koaBody(), ctx => {
-    const { id } = ctx.query;
+  .delete('/:id', ctx => {
+    const { id } = ctx.params;
     console.log(`Delete user with id ${id}`);
     ctx.status = 200;
-    ctx.body = { id: id, message: 'Still no user to delete here here yet' };
-  });
+    ctx.body = {
+      message: 'Delete user with given id',
+      id: id
+    };
+  }); 
 
 users.use(userRouter.routes());
 users.use(userRouter.allowedMethods());
