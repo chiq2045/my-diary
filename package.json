@@ -2,9 +2,8 @@
   "name": "my-diary",
   "version": "1.0.0",
   "description": "A diary web app",
-  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:backend": "nodemon backend/server.js"
   },
   "keywords": [
     "koa",
@@ -52,6 +51,7 @@
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
